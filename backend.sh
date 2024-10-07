@@ -68,3 +68,6 @@ rm -rf /app/* # remove existing code
 
 unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracring zip file"
+
+npm install &>>$LOG_FILE
+cp C:\devops\daws-81s\repos\expense-shell\backend.service
