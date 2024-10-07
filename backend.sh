@@ -55,6 +55,7 @@ then
     VALIDATE $? "adding user"
 else   
     echo "User already exists... $Y SKIPPING $N"
+fi
 
 mkdir -P /app &>>$LOG_FILE
 VALIDATE $? "created app folder"
@@ -66,6 +67,3 @@ cd /app &>>$LOG_FILE
 
 unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracring zip file"
-
-
-
