@@ -70,4 +70,21 @@ unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracring zip file"
 
 npm install &>>$LOG_FILE
-cp C:\devops\daws-81s\repos\expense-shell\backend.service
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
+
+# Load the data befpre running backend
+
+dnf install mysql -y &>>$LOG_FILE
+VALIDATE $? "Installing MySQL Client"
+
+mysql -h mysql.arudevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+VALIDATE $? "Schema or database loading"
+
+systemctl daemon-reload &>>$LOG_FILE
+VALIDATE $? "Daemon reload"
+
+systemctl enable backend &>>$LOG_FILE
+VALIDATE $? "Enable backend"
+
+systemctl restart backend &>>$LOG_FILE
+VALIDATE $? "restarted backend"
