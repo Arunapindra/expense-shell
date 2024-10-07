@@ -57,7 +57,7 @@ else
     echo "User already exists... $Y SKIPPING $N"
 fi
 
-mkdir -P /app &>>$LOG_FILE
+mkdir -p /app &>>$LOG_FILE
 VALIDATE $? "created app folder"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE
