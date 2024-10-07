@@ -50,7 +50,7 @@ VALIDATE $? "Installing nodejs"
 id expense &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
-    echo "user not exists.. $G CREATING $N"
+    echo -e "user not exists.. $G CREATING $N"
     useradd expense &>>$LOG_FILE
     VALIDATE $? "adding user"
 else   
