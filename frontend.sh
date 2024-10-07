@@ -47,21 +47,21 @@ VALIDATE $? "Enable nginx"
 systemctl start nginx &>>$LOG_FILE
 VALIDATE $? "Start nginx"
 
-# rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
-# VALIDATE $? "Remove default content is browser"
+rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
+VALIDATE $? "Remove default content is browser"
 
-# curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE
-# VALIDATE $? "Downloading frontend app code"
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE
+VALIDATE $? "Downloading frontend app code"
 
-# cd /usr/share/nginx/html &>>$LOG_FILE
+cd /usr/share/nginx/html &>>$LOG_FILE
 
-# unzip /tmp/frontend.zip &>>$LOG_FILE
-# VALIDATE $? "Extracting zip file"
+unzip /tmp/frontend.zip &>>$LOG_FILE
+VALIDATE $? "Extracting zip file"
 
-# cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 
 
-# systemctl restart nginx &>>$LOG_FILE
+systemctl restart nginx &>>$LOG_FILE
 
 
 
